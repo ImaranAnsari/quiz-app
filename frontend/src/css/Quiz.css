@@ -1,0 +1,87 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+.main-class {
+    width: 800px;
+    margin-top: 30px;
+    /* display: flex; */
+    justify-content: center;
+}
+
+
+.quizname {
+    color: rgb(141, 2, 2);
+    margin-top: 5rem;
+    font-size: large;
+    font-weight: 600;
+}
+
+.questions h3 {
+    color: blue;
+    margin: 3rem, 1rem;
+    margin-top: 3rem;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: large;
+    font-weight: 600;
+    min-width: 100%;
+}
+
+.option-btn {
+    box-shadow: 0px 0px 4px 1px rgb(128, 123, 123);
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 15rem;
+    color: black;
+    transition: 0.3s;
+    margin: 5px;
+    min-height: 30px;
+    background-color: white;
+}
+
+.option-btn:hover {
+    background-color: rgb(212, 118, 212);
+    color: white;
+}
+
+.action_button {
+    border: none;
+    background-color: rgb(249, 227, 227);
+    margin: 10px;
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(97, 22, 173);
+    width: 3rem;
+}
+
+.hide {
+    display: none;
+}
+
+.action_button:hover .hide {
+    display: block;
+    color: rgb(246, 243, 210);
+    width: 4rem;
+    background-color: #1e2a1b;
+    text-align: center;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+
+th {
+    font: bold;
+    font-size: large;
+    text-align: left;
+    color: rgb(255, 255, 255);
+}
+
+/* .heading {
+    text-align: left;
+} */

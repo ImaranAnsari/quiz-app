@@ -1,0 +1,177 @@
+.App {
+  text-align: center;
+  display: flex;
+  /* min-height: 100vh; */
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.auth-form-container {
+  /* width: 80vw;
+  height: 70vh; */
+  padding: 0.5rem;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 1rem;
+  align-content: center;
+}
+
+
+.editUser {
+  width: 30vw;
+}
+
+.user-form {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  align-content: center;
+
+}
+
+.user-detail {
+  min-height: 50vh;
+  min-width: 50vw;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+
+}
+
+.text-buton {
+  margin-top: 250px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input-field {
+  color: #fdfdff;
+}
+
+
+
+.homePage {
+  display: flex;
+  height: 90vh;
+  flex-wrap: wrap;
+}
+
+.cards {
+  max-width: 100%;
+  margin: 5px;
+  width: 40rem;
+}
+
+.bgCard {
+  background: radial-gradient(circle, rgba(4, 13, 103, 1) 12%, rgba(28, 38, 2, 1) 100%);
+}
+
+.bgCard2 {
+  background: linear-gradient(90deg, rgb(17, 2, 27) 0%, rgb(60, 2, 2) 50%, rgb(76, 24, 1) 100%);
+}
+
+.bgCard h1 {
+  color: #ebf6ff;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+  .auth-form-container {
+    padding: 3rem;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 1rem;
+    align-content: center;
+  }
+
+  .cards {
+    max-width: 100%;
+    margin: 5px;
+  }
+
+  .user-detail {
+    min-width: 90vw;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .auth-form-container {
+    padding: 1rem;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 1rem;
+    align-content: center;
+  }
+
+  .cards {
+    max-width: 100%;
+    margin: 5px;
+  }
+}
+
+label {
+  align-self: left;
+  text-align: left;
+  padding: 0.25rem 0;
+  float: left;
+}
+
+input {
+  margin: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  width: 90%;
+}
+
+.bton {
+  /* width: 8rem; */
+  border: none;
+  background-color: rgb(200, 243, 245);
+  margin: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: rgb(157, 76, 237);
+
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: #ebf6ff;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+table {
+  width: 90%;
+}
+
+tr {
+  height: 50px;
+  font-size: large;
+}
+
+td {
+  font: bold;
+  font-size: large;
+  text-align: left;
+  color: rgb(213, 215, 107);
+}

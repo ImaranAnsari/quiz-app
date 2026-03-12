@@ -1,0 +1,101 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+.quizAdd {
+    width: 600px;
+    margin-top: 30px;
+    /* display: flex; */
+    justify-content: center;
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 400;
+    margin-top: 50px;
+}
+
+.question-list {
+    width: 100%;
+}
+
+.cardAddQuiz {
+    width: 70vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cardCss {
+    border-radius: 10px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.optionAddQuiz {
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    margin: 10px;
+}
+
+.answer {
+
+    align-items: center;
+}
+
+.answer select {
+    margin: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    width: 73%;
+}
+
+
+.option input {
+    width: fit-content;
+}
+
+.action_button {
+    border: none;
+    background-color: rgb(249, 237, 237);
+    margin: 2px;
+    margin-top: 10px;
+    padding: 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(97, 22, 173);
+    width: 2rem;
+    height: 2rem;
+}
+
+.hide {
+    display: none;
+}
+
+.action_button:hover .hide {
+    display: block;
+    color: rgb(219, 201, 0);
+    width: 4rem;
+    background-color: #1e2a1b;
+    text-align: center;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.buttonAdd {
+    border: none;
+    background-color: rgb(200, 243, 245);
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(157, 76, 237);
+
+}

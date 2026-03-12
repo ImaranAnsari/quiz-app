@@ -1,0 +1,33 @@
+.reportView {
+    width: 60vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reportCard {
+    width: 45%;
+    margin: 20px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .reportView {
+        max-width: 100%;
+    }
+
+    .reportCard {
+        width: 45%;
+        margin: 10px;
+    }
+}
+
+@media only screen and (max-width: 584px) {
+    .reportView {
+        max-width: 100%;
+    }
+
+    .reportCard {
+        width: 80%;
+        margin: 10px;
+    }
+}

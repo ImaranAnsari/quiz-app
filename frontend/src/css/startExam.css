@@ -1,0 +1,71 @@
+.questionAnswer {
+    width: 100%;
+    margin-left: 1%;
+    margin-top: 5rem;
+    text-align: left;
+}
+
+.cardExam {
+    height: 25rem;
+}
+
+.form-check {
+    display: block;
+    min-height: 2.5rem;
+    padding-left: 2.5em;
+    margin-bottom: 2rem;
+}
+
+.ques {
+    font-size: large;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+.submitExam {
+    margin: 20px;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.heading {
+    font-size: 5rem;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.option {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+@media only screen and (max-width: 584px) {
+    .questionAnswer {
+        width: 98%;
+    }
+
+    .cardCss {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 10px;
+        margin: 1rem;
+        justify-content: space-around;
+    }
+
+    form .user__details .input__box {
+        margin-bottom: 15px;
+        width: 90%;
+    }
+
+    .option input {
+        width: fit-content;
+    }
+
+    .headings {
+        font-size: 3rem;
+        margin: 15px;
+    }
+}

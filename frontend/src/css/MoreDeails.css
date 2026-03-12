@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600");
+
+
+.placeholder {
+    background: #a0b6f8;
+    border-radius: 5px;
+    height: 15vh;
+    min-height: 100px;
+    margin-bottom: 30px;
+
+    &.medium {
+        height: 30vh;
+    }
+
+    &.large {
+        height: 45vh;
+    }
+}
+
+.modal__backdrop {
+    background: rgba(0, 0, 0, .65);
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.modal__container {
+    background: #b9a7a7;
+    border-radius: 5px;
+    max-width: 100%;
+    margin: 50px auto;
+    padding: 15px;
+    width: 560px;
+}
+
+.modal__title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.modal_button {
+    background: #8c54ff;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    padding: 10px 15px;
+    transition: transform 100ms ease-out;
+
+    &:hover {
+        background: #682ede;
+        transform: scale(1.1);
+    }
+}
