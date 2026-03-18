@@ -1,33 +1,70 @@
 .reportView {
-    width: 60vw;
+    width: 70vw;
     display: flex;
     flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
 }
 
 .reportCard {
-    width: 45%;
-    margin: 20px;
+    width: calc(45% - 0.75rem);
+    margin: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.reportCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.reportCard h5 {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.reportCard p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.reportCard .score {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 
 @media only screen and (max-width: 1024px) {
     .reportView {
         max-width: 100%;
+        width: 95%;
     }
 
     .reportCard {
-        width: 45%;
-        margin: 10px;
+        width: calc(50% - 0.75rem);
     }
 }
 
 @media only screen and (max-width: 584px) {
     .reportView {
         max-width: 100%;
+        flex-direction: column;
     }
 
     .reportCard {
-        width: 80%;
-        margin: 10px;
+        width: 100%;
+        margin: 0;
     }
 }

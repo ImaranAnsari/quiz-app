@@ -4,14 +4,23 @@
 .quizAdd {
     width: 600px;
     margin-top: 30px;
-    /* display: flex; */
     justify-content: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 h1 {
-    font-size: 5rem;
-    font-weight: 400;
-    margin-top: 50px;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-top: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f64f59 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .question-list {
@@ -23,18 +32,29 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 1.5rem;
 }
 
 .cardCss {
-    border-radius: 10px;
-    margin-bottom: 30px;
+    border-radius: 16px;
+    margin-bottom: 20px;
     justify-content: space-between;
-    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cardCss:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(102, 126, 234, 0.3);
 }
 
 .optionAddQuiz {
     display: flex;
-    justify-content: space-between;
     justify-content: center;
     align-items: center;
     width: max-content;
@@ -42,18 +62,34 @@ h1 {
 }
 
 .answer {
-
     align-items: center;
 }
 
 .answer select {
-    margin: 1rem;
-    padding: 1rem;
-    border: none;
-    border-radius: 10px;
-    width: 73%;
+    margin: 0.75rem 0;
+    padding: 1rem 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    cursor: pointer;
 }
 
+.answer select:focus {
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+}
+
+.answer select option {
+    background: #1a1a2e;
+    color: #ffffff;
+    padding: 10px;
+}
 
 .option input {
     width: fit-content;
@@ -61,15 +97,28 @@ h1 {
 
 .action_button {
     border: none;
-    background-color: rgb(249, 237, 237);
-    margin: 2px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    margin: 5px;
     margin-top: 10px;
-    padding: 3px;
+    padding: 8px 12px;
     border-radius: 10px;
     cursor: pointer;
-    color: rgb(97, 22, 173);
-    width: 2rem;
-    height: 2rem;
+    color: #667eea;
+    width: auto;
+    min-width: 2.5rem;
+    height: auto;
+    min-height: 2.5rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action_button:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 .hide {
@@ -78,24 +127,51 @@ h1 {
 
 .action_button:hover .hide {
     display: block;
-    color: rgb(219, 201, 0);
-    width: 4rem;
-    background-color: #1e2a1b;
+    color: #ffffff;
+    width: auto;
+    min-width: 4rem;
+    background: rgba(0, 0, 0, 0.85);
     text-align: center;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
+    border-radius: 8px;
+    padding: 8px 12px;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .buttonAdd {
     border: none;
-    background-color: rgb(200, 243, 245);
-    margin: 5px;
-    padding: 20px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 8px;
+    padding: 16px 28px;
+    border-radius: 12px;
     cursor: pointer;
-    color: rgb(157, 76, 237);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
 
+.buttonAdd:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+@media screen and (max-width: 650px) {
+    .quizAdd {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .cardAddQuiz {
+        width: 100%;
+    }
 }
