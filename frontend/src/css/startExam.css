@@ -1,49 +1,121 @@
 .questionAnswer {
     width: 100%;
-    margin-left: 1%;
-    margin-top: 5rem;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
     text-align: left;
+    padding: 0 1rem;
 }
 
 .cardExam {
-    height: 25rem;
+    min-height: 220px;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(108, 99, 255, 0.2) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s;
+}
+
+.cardExam:hover {
+    box-shadow: 0 6px 28px rgba(108, 99, 255, 0.2) !important;
+}
+
+.cardExam .card-header {
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(79, 172, 254, 0.1)) !important;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.2) !important;
+    padding: 1rem 1.25rem !important;
+    border-radius: 14px 14px 0 0 !important;
+}
+
+.cardExam .card-body {
+    padding: 1.25rem !important;
+    background: transparent !important;
 }
 
 .form-check {
-    display: block;
+    display: flex;
+    align-items: center;
     min-height: 2.5rem;
-    padding-left: 2.5em;
-    margin-bottom: 2rem;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: background 0.2s, border-color 0.2s;
+    padding: 0.6rem 0.75rem 0.6rem 2rem;
+    cursor: pointer;
+}
+
+.form-check:hover {
+    background: rgba(108, 99, 255, 0.1);
+    border-color: rgba(108, 99, 255, 0.25);
+}
+
+.form-check-input {
+    border-color: rgba(108, 99, 255, 0.5) !important;
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: #6C63FF !important;
+    border-color: #6C63FF !important;
+}
+
+.form-check-label {
+    color: #c0c8e0 !important;
+    cursor: pointer;
+    font-size: 0.95rem;
 }
 
 .ques {
-    font-size: large;
-    font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 0rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+    color: #e0e0e0;
 }
 
 .submitExam {
-    margin: 20px;
-    font-size: larger;
+    display: block;
+    margin: 2rem auto;
+    padding: 14px 48px;
+    font-size: 1rem;
     font-weight: 700;
+    background: linear-gradient(135deg, #6C63FF, #4facfe) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4) !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+    letter-spacing: 0.5px;
+}
+
+.submitExam:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 28px rgba(108, 99, 255, 0.6) !important;
 }
 
 .heading {
-    font-size: 5rem;
-    font-weight: 400;
-    margin-top: 15px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #ffffff, #c0b8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .option {
     margin-left: 10px;
-    margin-top: 10px;
 }
-
 
 @media only screen and (max-width: 584px) {
     .questionAnswer {
         width: 98%;
+        padding: 0 0.5rem;
     }
 
     .cardCss {
@@ -51,7 +123,7 @@
         display: flex;
         flex-wrap: wrap;
         border-radius: 10px;
-        margin: 1rem;
+        margin: 0.75rem;
         justify-content: space-around;
     }
 
@@ -65,7 +137,7 @@
     }
 
     .headings {
-        font-size: 3rem;
+        font-size: 2rem;
         margin: 15px;
     }
 }

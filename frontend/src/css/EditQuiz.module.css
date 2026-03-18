@@ -1,25 +1,27 @@
 .quiz {
-    margin: 2rem;
+    margin: 1.5rem;
 }
-
 
 .auth-form-container {
     width: 80vw;
-    height: 70vh;
-    padding: 0.5rem;
-    border: 1px solid;
-    border-radius: 10px;
+    min-height: 60vh;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    border-radius: 16px;
     margin: 1rem;
     align-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 .cardCss {
     width: 70vw;
     display: flex;
     flex-wrap: wrap;
-    border-radius: 10px;
+    border-radius: 12px;
     margin: 1rem;
     justify-content: space-around;
+    gap: 1rem;
 }
 
 .option input {
@@ -27,25 +29,37 @@
 }
 
 .headings {
-    font-size: 5rem;
-    font-weight: 400;
-    margin-top: 50px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 30px;
+    background: linear-gradient(135deg, #ffffff, #c0b8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .buttonEdit {
     border: none;
-    background-color: rgb(200, 243, 245);
-    margin: 5px;
-    padding: 20px;
+    background: linear-gradient(135deg, #6C63FF, #4facfe);
+    margin: 6px;
+    padding: 12px 24px;
     border-radius: 10px;
     cursor: pointer;
-    color: rgb(157, 76, 237);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.35);
+}
 
+.buttonEdit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.5);
 }
 
 @media only screen and (max-width: 584px) {
-    .container {
-        max-width: 100%;
+    .auth-form-container {
+        width: 100%;
     }
 
     .cardCss {
@@ -53,7 +67,7 @@
         display: flex;
         flex-wrap: wrap;
         border-radius: 10px;
-        margin: 1rem;
+        margin: 0.75rem;
         justify-content: space-around;
     }
 
@@ -67,7 +81,7 @@
     }
 
     .headings {
-        font-size: 3rem;
+        font-size: 2rem;
         margin: 15px;
     }
 }

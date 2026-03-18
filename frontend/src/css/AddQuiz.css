@@ -1,17 +1,22 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
-
 .quizAdd {
-    width: 600px;
+    width: 100%;
+    max-width: 900px;
     margin-top: 30px;
-    /* display: flex; */
     justify-content: center;
+    padding: 0 1rem;
+    color: #e0e0e0;
 }
 
-h1 {
-    font-size: 5rem;
-    font-weight: 400;
-    margin-top: 50px;
+.quizAdd h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 30px;
+    background: linear-gradient(135deg, #ffffff, #c0b8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .question-list {
@@ -19,57 +24,100 @@ h1 {
 }
 
 .cardAddQuiz {
-    width: 70vw;
+    width: 80vw;
+    max-width: 960px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 1rem;
 }
 
 .cardCss {
-    border-radius: 10px;
-    margin-bottom: 30px;
+    border-radius: 14px;
+    margin-bottom: 0;
     justify-content: space-between;
-    margin-bottom: 30px;
+}
+
+/* Quiz cards */
+.cardAddQuiz > .card {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(108, 99, 255, 0.2) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+    color: #e0e0e0 !important;
+    width: 100%;
+    min-width: 320px;
+    transition: box-shadow 0.2s;
+}
+
+.cardAddQuiz > .card:hover {
+    box-shadow: 0 6px 28px rgba(108, 99, 255, 0.2) !important;
+}
+
+.cardAddQuiz .card-body {
+    background: transparent !important;
+    padding: 1.25rem !important;
 }
 
 .optionAddQuiz {
     display: flex;
-    justify-content: space-between;
-    justify-content: center;
     align-items: center;
     width: max-content;
-    margin: 10px;
+    margin: 8px 0;
+    gap: 8px;
 }
 
 .answer {
-
     align-items: center;
+    margin-top: 0.75rem;
 }
 
 .answer select {
-    margin: 1rem;
-    padding: 1rem;
-    border: none;
-    border-radius: 10px;
-    width: 73%;
+    margin: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid rgba(108, 99, 255, 0.3);
+    border-radius: 8px;
+    width: 70%;
+    background: rgba(255, 255, 255, 0.06);
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    cursor: pointer;
 }
 
+.answer select:focus {
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.18);
+}
+
+.answer select option {
+    background: #16213e;
+    color: #e0e0e0;
+}
 
 .option input {
     width: fit-content;
 }
 
 .action_button {
-    border: none;
-    background-color: rgb(249, 237, 237);
+    border: 1px solid rgba(108, 99, 255, 0.25);
+    background: rgba(108, 99, 255, 0.1);
     margin: 2px;
-    margin-top: 10px;
-    padding: 3px;
-    border-radius: 10px;
+    padding: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    color: rgb(97, 22, 173);
+    color: #9d95ff;
     width: 2rem;
     height: 2rem;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+}
+
+.action_button:hover {
+    background: rgba(108, 99, 255, 0.25);
+    transform: translateY(-1px);
+    color: #c0b8ff;
 }
 
 .hide {
@@ -78,24 +126,39 @@ h1 {
 
 .action_button:hover .hide {
     display: block;
-    color: rgb(219, 201, 0);
-    width: 4rem;
-    background-color: #1e2a1b;
-    text-align: center;
+    color: #ffffff;
+    width: max-content;
+    background: rgba(26, 26, 46, 0.95);
+    border: 1px solid rgba(108, 99, 255, 0.3);
     text-align: center;
     border-radius: 6px;
-    padding: 8px 0;
+    padding: 5px 10px;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.78rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .buttonAdd {
     border: none;
-    background-color: rgb(200, 243, 245);
-    margin: 5px;
-    padding: 20px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(79, 172, 254, 0.15));
+    border: 1px solid rgba(108, 99, 255, 0.3);
+    margin: 6px 4px;
+    padding: 8px 18px;
+    border-radius: 8px;
     cursor: pointer;
-    color: rgb(157, 76, 237);
+    color: #9d95ff;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background 0.2s, transform 0.15s;
+}
 
+.buttonAdd:hover {
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.35), rgba(79, 172, 254, 0.25));
+    transform: translateY(-1px);
+    color: #ffffff;
 }

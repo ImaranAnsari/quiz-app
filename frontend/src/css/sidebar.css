@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-
 em {
   font-style: normal;
 }
@@ -19,41 +18,62 @@ em {
   flex: 1;
 }
 
-/* Sidebar */
+/* Sidebar trigger (hamburger) */
 .s-sidebar__trigger {
   z-index: 2;
   position: fixed;
-  top: 9px;
-  left: 9px;
+  top: 12px;
+  left: 12px;
+  background: rgba(108, 99, 255, 0.15);
+  border: 1px solid rgba(108, 99, 255, 0.35);
   border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.s-sidebar__trigger>i {
+.s-sidebar__trigger:hover {
+  background: rgba(108, 99, 255, 0.3);
+}
+
+.s-sidebar__trigger > i {
   display: inline-block;
-  margin: 21px;
-  color: #000000;
   margin: 10px;
-  border-radius: 20%;
-
+  color: #b0a8ff;
+  font-size: 1.1rem;
 }
 
+/* Sidebar nav */
 .s-sidebar__nav {
   position: fixed;
   top: 0;
   left: -15em;
   overflow: hidden;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in-out;
   width: 15em;
   height: 100%;
-  background: linear-gradient(90deg, #3e3b6f, #201a5b);
-  color: linear-gradient(90deg, #C7C5F4, #938bd6);
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  border-right: 1px solid rgba(108, 99, 255, 0.2);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+  color: #c0c8e0;
 }
 
 .s-sidebar__nav:hover,
 .s-sidebar__nav:focus,
-.s-sidebar__trigger:focus+.s-sidebar__nav,
-.s-sidebar__trigger:hover+.s-sidebar__nav {
+.s-sidebar__trigger:focus + .s-sidebar__nav,
+.s-sidebar__trigger:hover + .s-sidebar__nav {
   left: 0;
+}
+
+/* Sidebar branding strip */
+.s-sidebar__nav::before {
+  content: '🎯 Quiz App';
+  display: block;
+  padding: 1.2rem 1rem 1rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #9d95ff;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(108, 99, 255, 0.15);
 }
 
 .s-sidebar__nav ul {
@@ -61,19 +81,26 @@ em {
   top: 4em;
   left: 0;
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 0;
   width: 15em;
 }
 
 .s-sidebar__nav ul li {
   width: 100%;
+  list-style: none;
 }
 
 .s-sidebar__nav-link {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 4em;
+  height: 3.5em;
+  color: #c0c8e0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border-left: 3px solid transparent;
 }
 
 .s-sidebar__nav-link em {
@@ -81,35 +108,40 @@ em {
   top: 50%;
   left: 4em;
   transform: translateY(-50%);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 .s-sidebar__nav-link:hover {
-  background: #586b7d;
+  background: rgba(108, 99, 255, 0.15);
+  color: #ffffff;
+  border-left-color: #6C63FF;
 }
 
-.s-sidebar__nav-link>i {
+.s-sidebar__nav-link > i {
   position: absolute;
   top: 0;
   left: 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 4em;
-  height: 4em;
+  height: 3.5em;
+  color: #9d95ff;
+  font-size: 1rem;
+  transition: color 0.2s;
 }
 
-.s-sidebar__nav-link>i::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.s-sidebar__nav-link:hover > i {
+  color: #c0b8ff;
 }
 
 /* Mobile First */
 @media only screen and (min-width: 580px) {
-
-  /* Sidebar */
   .s-sidebar__trigger {
     margin: 2px;
-    border-radius: 20%;
+    border-radius: 10px;
   }
 
   .s-sidebar__nav {
@@ -119,17 +151,15 @@ em {
 
   .s-sidebar__nav:hover,
   .s-sidebar__nav:focus,
-  .s-sidebar__trigger:hover+.s-sidebar__nav,
-  .s-sidebar__trigger:focus+.s-sidebar__nav {
+  .s-sidebar__trigger:hover + .s-sidebar__nav,
+  .s-sidebar__trigger:focus + .s-sidebar__nav {
     width: 15em;
   }
 }
 
 @media only screen and (min-width: 900px) {
-
-  /* Sidebar */
   .s-sidebar__trigger {
-    display: none
+    display: none;
   }
 
   .s-sidebar__nav {

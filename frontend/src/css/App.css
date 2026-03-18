@@ -1,22 +1,23 @@
 .App {
   text-align: center;
   display: flex;
-  /* min-height: 100vh; */
   align-items: center;
   justify-content: center;
   color: white;
+  min-height: 100vh;
 }
 
+/* ── Auth / form containers ── */
 .auth-form-container {
-  /* width: 80vw;
-  height: 70vh; */
-  padding: 0.5rem;
-  border: 1px solid;
-  border-radius: 10px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
   margin: 1rem;
   align-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
-
 
 .editUser {
   width: 30vw;
@@ -29,7 +30,6 @@
   align-items: center;
   justify-content: left;
   align-content: center;
-
 }
 
 .user-detail {
@@ -40,7 +40,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: left;
-
 }
 
 .text-buton {
@@ -53,12 +52,12 @@
   color: #fdfdff;
 }
 
-
-
+/* ── Home page ── */
 .homePage {
   display: flex;
   height: 90vh;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .cards {
@@ -68,15 +67,28 @@
 }
 
 .bgCard {
-  background: radial-gradient(circle, rgba(4, 13, 103, 1) 12%, rgba(28, 38, 2, 1) 100%);
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.8) 0%, rgba(79, 172, 254, 0.6) 100%);
+  border: 1px solid rgba(108, 99, 255, 0.4) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(108, 99, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bgCard2 {
-  background: linear-gradient(90deg, rgb(17, 2, 27) 0%, rgb(60, 2, 2) 50%, rgb(76, 24, 1) 100%);
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.9) 100%);
+  border: 1px solid rgba(108, 99, 255, 0.25) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .bgCard h1 {
-  color: #ebf6ff;
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
 }
 
 img {
@@ -85,19 +97,12 @@ img {
   vertical-align: middle;
 }
 
-
-
-
-
-
-
+/* ── Responsive ── */
 @media screen and (max-width: 600px) {
   .auth-form-container {
-    padding: 3rem;
-    border: 1px solid;
-    border-radius: 10px;
-    margin: 1rem;
-    align-content: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 0.75rem;
   }
 
   .cards {
@@ -113,10 +118,8 @@ img {
 @media screen and (max-width: 300px) {
   .auth-form-container {
     padding: 1rem;
-    border: 1px solid;
     border-radius: 10px;
-    margin: 1rem;
-    align-content: center;
+    margin: 0.5rem;
   }
 
   .cards {
@@ -125,53 +128,101 @@ img {
   }
 }
 
+/* ── Labels & inputs ── */
 label {
   align-self: left;
   text-align: left;
   padding: 0.25rem 0;
   float: left;
+  color: #c0c8e0;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 input {
-  margin: 1rem;
-  padding: 1rem;
-  border: none;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(108, 99, 255, 0.3);
   border-radius: 10px;
   width: 90%;
+  background: rgba(255, 255, 255, 0.07);
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
 }
 
+input:focus {
+  border-color: #6C63FF;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+input::placeholder {
+  color: rgba(224, 224, 224, 0.4);
+}
+
+/* ── Buttons ── */
 .bton {
-  /* width: 8rem; */
   border: none;
-  background-color: rgb(200, 243, 245);
-  margin: 5px;
-  padding: 20px;
+  background: linear-gradient(135deg, #6C63FF, #4facfe);
+  margin: 6px;
+  padding: 12px 24px;
   border-radius: 10px;
   cursor: pointer;
-  color: rgb(157, 76, 237);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.35);
+}
 
+.bton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.5);
+}
+
+.bton:active {
+  transform: translateY(0);
 }
 
 .link-btn {
   border: none;
   background: none;
-  color: #ebf6ff;
+  color: #9d95ff;
   text-decoration: underline;
   margin-top: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
 }
 
+.link-btn:hover {
+  color: #c0b8ff;
+}
+
+/* ── Tables ── */
 table {
   width: 90%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 tr {
   height: 50px;
   font-size: large;
+  transition: background 0.15s;
+}
+
+tbody tr:hover {
+  background: rgba(108, 99, 255, 0.1);
 }
 
 td {
-  font: bold;
   font-size: large;
   text-align: left;
-  color: rgb(213, 215, 107);
+  color: #c8d0e8;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }

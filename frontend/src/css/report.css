@@ -1,14 +1,44 @@
 .reportView {
-    width: 60vw;
+    width: 70vw;
+    max-width: 1000px;
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .reportCard {
     width: 45%;
-    margin: 20px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(108, 99, 255, 0.2) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
 }
 
+.reportCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(108, 99, 255, 0.25) !important;
+}
+
+.reportCard .card-header {
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.25), rgba(79, 172, 254, 0.15)) !important;
+    color: #c0b8ff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.2) !important;
+    padding: 0.85rem 1rem !important;
+}
+
+.reportCard .list-group-item {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+    color: #c0c8e0 !important;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.9rem;
+}
 
 @media only screen and (max-width: 1024px) {
     .reportView {
@@ -17,17 +47,15 @@
 
     .reportCard {
         width: 45%;
-        margin: 10px;
     }
 }
 
 @media only screen and (max-width: 584px) {
     .reportView {
-        max-width: 100%;
+        width: 100%;
     }
 
     .reportCard {
-        width: 80%;
-        margin: 10px;
+        width: 90%;
     }
 }
