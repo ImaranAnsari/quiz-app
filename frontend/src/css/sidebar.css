@@ -67,10 +67,34 @@
   left: 0;
 }
 
+/* ===== Sidebar Brand ===== */
+.s-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-lg);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: var(--space-sm);
+}
+
+.s-sidebar__logo {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+}
+
+.s-sidebar__brand-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+}
+
 .s-sidebar__nav ul {
-  position: absolute;
-  top: 3em;
-  left: 0;
   margin: 0;
   padding: var(--space-sm);
   width: 100%;
@@ -166,9 +190,5 @@
   .s-sidebar__nav {
     width: 16em;
     left: 0;
-  }
-
-  .s-sidebar__nav ul {
-    top: 1.5em;
   }
 }

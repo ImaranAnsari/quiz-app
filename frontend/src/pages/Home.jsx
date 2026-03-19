@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "../css/App.css"
+import logo from "../assets/logo.png"
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -10,7 +11,16 @@ export const Home = () => {
       <div className="auth-form-container" style={{ maxWidth: '700px', border: 'none', background: 'transparent', backdropFilter: 'none', boxShadow: 'none', padding: 0 }}>
         <div className="homePage">
           <div className="card cards bgCard">
-            <h1>Welcome to Quiz</h1>
+            <img src={logo} alt="QuizApp Logo" style={{
+              width: '80px',
+              height: '80px',
+              marginBottom: 'var(--space-lg)',
+              position: 'relative',
+              zIndex: 1,
+              filter: 'drop-shadow(0 4px 16px rgba(139, 92, 246, 0.4))',
+              borderRadius: 'var(--radius-lg)'
+            }} />
+            <h1>Welcome to QuizApp</h1>
             <p style={{
               color: 'var(--text-secondary)',
               fontSize: '1.1rem',

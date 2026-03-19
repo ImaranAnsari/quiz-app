@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import "../css/sidebar.css";
 import { logout } from "../api/User";
+import logo from "../assets/logo.png";
 
 export const Sidebar = () => {
 
@@ -12,6 +13,10 @@ export const Sidebar = () => {
             <span className="s-sidebar__trigger"> <i className="fa fa-bars"></i> </span>
 
             <nav className="s-sidebar__nav">
+                <div className="s-sidebar__brand" onClick={() => navigate("/dashboard")}>
+                    <img src={logo} alt="QuizApp" className="s-sidebar__logo" />
+                    <span className="s-sidebar__brand-name">QuizApp</span>
+                </div>
                 <ul>
                     <li>
                         <span className="s-sidebar__nav-link" onClick={() => navigate("/dashboard")}>
