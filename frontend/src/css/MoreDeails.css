@@ -1,62 +1,78 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600");
-
-
-.placeholder {
-    background: #a0b6f8;
-    border-radius: 5px;
-    height: 15vh;
-    min-height: 100px;
-    margin-bottom: 30px;
-
-    &.medium {
-        height: 30vh;
-    }
-
-    &.large {
-        height: 45vh;
-    }
-}
+/* ===== More Details Modal ===== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 .modal__backdrop {
-    background: rgba(0, 0, 0, .65);
-    bottom: 0;
-    left: 0;
-    overflow: auto;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease-out;
 }
 
 .modal__container {
-    background: #b9a7a7;
-    border-radius: 5px;
-    max-width: 100%;
-    margin: 50px auto;
-    padding: 15px;
-    width: 560px;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  max-width: 95%;
+  margin: var(--space-xl) auto;
+  padding: var(--space-2xl);
+  width: 600px;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.3s ease-out;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .modal__title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 25px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xl);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .modal_button {
-    background: #8c54ff;
-    border: 0;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    padding: 10px 15px;
-    transition: transform 100ms ease-out;
+  background: var(--gradient-primary);
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  margin-top: var(--space-xl);
+  padding: 0.75rem 1.5rem;
+  transition: all var(--transition-normal);
+  letter-spacing: 0.02em;
+}
 
-    &:hover {
-        background: #682ede;
-        transform: scale(1.1);
-    }
+.modal_button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-purple);
+}
+
+/* Quiz details inside modal */
+.modal__container .quizname {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.modal__container .quizname h1 {
+  font-size: 1.25rem;
 }

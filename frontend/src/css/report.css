@@ -1,33 +1,81 @@
+/* ===== Report Page ===== */
+
 .reportView {
-    width: 60vw;
-    display: flex;
-    flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  justify-content: center;
+  animation: fadeInUp 0.5s ease-out;
 }
 
 .reportCard {
-    width: 45%;
-    margin: 20px;
+  width: calc(50% - var(--space-lg));
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--border-glass) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  margin: 0;
 }
 
+.reportCard:hover {
+  border-color: var(--border-glass-hover) !important;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow-purple);
+}
 
+.reportCard .card-header {
+  background: rgba(139, 92, 246, 0.12) !important;
+  border-bottom: 1px solid var(--border-glass) !important;
+  color: var(--accent-purple-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.reportCard .list-group-item {
+  background: transparent !important;
+  border-color: var(--border-glass) !important;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.reportCard .list-group-item:last-of-type {
+  border-bottom: none;
+}
+
+.reportCard .bton {
+  margin: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+  font-size: 0.85rem;
+  padding: 0.5rem 1.25rem;
+}
+
+/* ===== Responsive ===== */
 @media only screen and (max-width: 1024px) {
-    .reportView {
-        max-width: 100%;
-    }
+  .reportView {
+    max-width: 100%;
+  }
 
-    .reportCard {
-        width: 45%;
-        margin: 10px;
-    }
+  .reportCard {
+    width: calc(50% - var(--space-md));
+  }
 }
 
 @media only screen and (max-width: 584px) {
-    .reportView {
-        max-width: 100%;
-    }
+  .reportView {
+    padding: 0 var(--space-md);
+  }
 
-    .reportCard {
-        width: 80%;
-        margin: 10px;
-    }
+  .reportCard {
+    width: 100%;
+  }
 }

@@ -1,73 +1,95 @@
 .quiz {
-    margin: 2rem;
+  margin: var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
 }
 
+.quiz label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  min-width: 100px;
+}
+
+.quiz input {
+  flex: 1;
+  min-width: 200px;
+}
 
 .auth-form-container {
-    width: 80vw;
-    height: 70vh;
-    padding: 0.5rem;
-    border: 1px solid;
-    border-radius: 10px;
-    margin: 1rem;
-    align-content: center;
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-2xl);
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  margin: var(--space-xl) auto;
 }
 
 .cardCss {
-    width: 70vw;
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 10px;
-    margin: 1rem;
-    justify-content: space-around;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: var(--radius-lg);
+  margin: var(--space-md) auto;
+  justify-content: center;
+  gap: var(--space-lg);
 }
 
 .option input {
-    width: fit-content;
+  width: auto;
+  flex: 1;
+  min-width: 120px;
 }
 
 .headings {
-    font-size: 5rem;
-    font-weight: 400;
-    margin-top: 50px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: var(--space-xl);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
 }
 
 .buttonEdit {
-    border: none;
-    background-color: rgb(200, 243, 245);
-    margin: 5px;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: rgb(157, 76, 237);
+  border: none;
+  background: var(--gradient-primary);
+  color: #fff;
+  margin: var(--space-sm);
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all var(--transition-normal);
+  letter-spacing: 0.02em;
+}
 
+.buttonEdit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-purple);
 }
 
 @media only screen and (max-width: 584px) {
-    .container {
-        max-width: 100%;
-    }
+  .cardCss {
+    width: 100%;
+    margin: var(--space-sm);
+  }
 
-    .cardCss {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        border-radius: 10px;
-        margin: 1rem;
-        justify-content: space-around;
-    }
+  .option input {
+    width: 100%;
+  }
 
-    form .user__details .input__box {
-        margin-bottom: 15px;
-        width: 90%;
-    }
-
-    .option input {
-        width: fit-content;
-    }
-
-    .headings {
-        font-size: 3rem;
-        margin: 15px;
-    }
+  .headings {
+    font-size: 2rem;
+    margin: var(--space-md);
+  }
 }

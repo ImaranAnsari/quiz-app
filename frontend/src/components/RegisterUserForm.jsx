@@ -11,7 +11,6 @@ export const RegisterUserForm = ({ loginScreen }) => {
   const password_ref = useRef();
   const confirm_password_ref = useRef();
 
-
   async function submitHandler(event) {
     event.preventDefault();
     const userName = user_name_ref.current.value;
@@ -31,41 +30,40 @@ export const RegisterUserForm = ({ loginScreen }) => {
     }
     await register(user, loginScreen)
   }
+
   return (
     <>
-      <h1 className='heading'>Registration</h1><br />
+      <h1 className='heading'>✨ Registration</h1>
       <div className="container">
         <form onSubmit={submitHandler}>
           <div className="user__details">
             <div className="input__box">
               <span className="details">Full Name</span>
-              <input type="text" placeholder="User Name" id="userName" ref={user_name_ref} />
+              <input type="text" placeholder="Enter your name" id="userName" ref={user_name_ref} />
             </div>
             <div className="input__box">
               <span className="details">Email</span>
-              <input type="text" placeholder="Email" id="email" ref={email_ref} />
+              <input type="text" placeholder="Enter your email" id="email" ref={email_ref} />
             </div>
             <div className="input__box">
               <span className="details">Contact</span>
-              <input type="text" placeholder="Contact" id="contact" ref={contact_ref} />
+              <input type="text" placeholder="Enter contact number" id="contact" ref={contact_ref} />
             </div>
             <div className="input__box">
               <span className="details">Address</span>
-              <input type="text" placeholder="Address" id="address" ref={address_ref} />
-
+              <input type="text" placeholder="Enter your address" id="address" ref={address_ref} />
             </div>
             <div className="input__box">
               <span className="details">Password</span>
-              <input type="password" placeholder="Password" id="password" ref={password_ref} />
+              <input type="password" placeholder="Create a password" id="password" ref={password_ref} />
             </div>
             <div className="input__box">
               <span className="details">Confirm Password</span>
-              <input type="password" placeholder="Confirm Password" id="confirm_password" ref={confirm_password_ref} />
+              <input type="password" placeholder="Confirm your password" id="confirm_password" ref={confirm_password_ref} />
             </div>
-
           </div>
           <div className="button">
-            <button className='bton'>Register</button>
+            <button className='bton' style={{ width: '100%', padding: '1rem' }}>Create Account</button>
           </div>
         </form>
       </div>

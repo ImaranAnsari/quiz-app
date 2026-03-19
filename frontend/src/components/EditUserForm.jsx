@@ -23,8 +23,8 @@ export const EditUserForm = () => {
       address
     }
     await updateUser(user)
-
   }
+
   const [userData, setUserData] = useState("");
 
   useEffect(() => {
@@ -40,27 +40,38 @@ export const EditUserForm = () => {
   }, []);
 
   return (
-    <div className='auth-form-container editUser'>
-      <h1>Edit user</h1>
-      <form className='register-form' onSubmit={submitUpdateHandler}>
-        <div >
-          <label htmlFor="userName">User Name</label><br />
-          <input type="text" placeholder="User Name" id="userName" value={userData.userName} ref={User_Name_ref} />
-        </div>
-        <div >
-          <label htmlFor="contact">Contact No</label><br />
-          <input type="text" placeholder="Contact No" id="contact" value={userData.contact} ref={Contact_ref} />
-        </div>
-        <div >
-          <label htmlFor="address">Address</label><br />
-          <input type="text" placeholder="Address" id="address" value={userData.address} ref={Address_ref} />
-        </div>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      padding: 'var(--space-xl)'
+    }}>
+      <div className='auth-form-container' style={{ maxWidth: '520px' }}>
+        <h1>✏️ Edit Profile</h1>
+        <form className='register-form' onSubmit={submitUpdateHandler}>
+          <div>
+            <label htmlFor="userName">User Name</label>
+            <input type="text" placeholder="User Name" id="userName" defaultValue={userData.userName} ref={User_Name_ref} />
+          </div>
+          <div>
+            <label htmlFor="contact">Contact No</label>
+            <input type="text" placeholder="Contact No" id="contact" defaultValue={userData.contact} ref={Contact_ref} />
+          </div>
+          <div>
+            <label htmlFor="address">Address</label>
+            <input type="text" placeholder="Address" id="address" defaultValue={userData.address} ref={Address_ref} />
+          </div>
 
-        <div >
-          <button className='bton'>Submit</button>
-          <button className='bton' onClick={() => navigate("/dashboard")}>Cancel</button>
-        </div>
-      </form>
+          <div className='button'>
+            <button className='bton' type="submit">Save Changes</button>
+            <button className='bton' type="button" onClick={() => navigate("/dashboard")} style={{
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid var(--border-glass-hover)'
+            }}>Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }

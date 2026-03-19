@@ -36,7 +36,7 @@ export const QuizList = () => {
 
   const editHandler = ((_id) => {
     let quizId = _id
-    navigate(`/editquiz`, { state: { quizId } })
+    navigate(`/dashboard/editquiz`, { state: { quizId } })
   });
 
   const deleteHandler = (async (_id) => {
@@ -56,7 +56,7 @@ export const QuizList = () => {
       {isModalOpen && <MoreDetails quizId={quiz1} onRequestClose={toggleModal} />}
       <div className='main-class'>
         <h1>Quiz</h1>
-        <button className="bton" onClick={() => navigate("/addquiz")}>Add Quiz</button>
+        <button className="bton" onClick={() => navigate("/dashboard/addquiz")}>Add Quiz</button>
         <table>
           <thead>
             <tr>

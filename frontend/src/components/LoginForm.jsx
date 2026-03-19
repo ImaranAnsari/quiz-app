@@ -23,19 +23,20 @@ export const LoginForm = ({ loggedinScreen }) => {
             console.log('error', error);
         }
     }
+
     return (
         <>
-
             <div className="screen">
                 <div className="screen__content">
-
                     <div className='headlog'>
-                        <h1 >Login</h1>
+                        <h1>Welcome Back</h1>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: 'var(--space-sm)' }}>
+                            Sign in to continue to your dashboard
+                        </p>
                     </div>
                     <form className="login" onSubmit={submitHandler}>
                         <div className="login__field">
-                            {/* <i className="login__icon loginIcon fa fa-user"></i> */}
-                            <input type="email" className="login__input" placeholder="Email"
+                            <input type="email" className="login__input" placeholder="Email address"
                                 id="email"
                                 name='email'
                                 value={data.email}
@@ -43,7 +44,6 @@ export const LoginForm = ({ loggedinScreen }) => {
                                 required={true} />
                         </div>
                         <div className="login__field">
-                            {/* <i className="login__icon fa fa-lock"></i> */}
                             <input type="password" className="login__input" placeholder="Password" id="password"
                                 name='password'
                                 value={data.password}
@@ -51,11 +51,9 @@ export const LoginForm = ({ loggedinScreen }) => {
                             />
                         </div>
                         <button className="button login__submit">
-                            <i className="button__icon fa fa-chevron-right"> </i>
-                            <span className="button__text"> Login </span>
+                            <span className="button__text">Sign In</span>
                         </button>
                     </form>
-
                 </div>
                 <div className="screen__background">
                     <span className="screen__background__shape screen__background__shape4"></span>
@@ -64,7 +62,6 @@ export const LoginForm = ({ loggedinScreen }) => {
                     <span className="screen__background__shape screen__background__shape1"></span>
                 </div>
             </div>
-
         </>
     )
 }

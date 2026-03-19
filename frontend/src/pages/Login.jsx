@@ -7,12 +7,18 @@ import '../css/App.css';
 export const Login = () => {
     const navigate = useNavigate();
     return (
-        <div className="auth-form-container" >
+        <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: '100vh',
+            padding: 'var(--space-xl)',
+            flexDirection: 'column',
+        }}>
             <LoginForm
                 loggedinScreen={navigate}
             />
-
-            <button className='link-btn' onClick={() => navigate("/register")}>Don't have an account ?  Register here</button>
+            <button className='link-btn' onClick={() => navigate("/register")}>Don't have an account? Register here</button>
         </div>
     )
 }

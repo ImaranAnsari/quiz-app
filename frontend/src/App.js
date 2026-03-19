@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import './css/App.css';
 import { Home } from "./pages/Home";
 import { RegisterUser } from "./pages/RegisterUser";
@@ -13,17 +13,23 @@ import PublishedQuiz from "./pages/exam/PublishedQuiz";
 import Exam from "./pages/exam/Exam";
 import SubmitExam from "./pages/exam/SubmitExam";
 import Report from "./pages/exam/Report";
+import { Sidebar } from "./components/Sidebar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+const DashboardLayout = () => (
+  <div className="dashboard-layout">
+    <Sidebar />
+    <main className="dashboard-content">
+      <Outlet />
+    </main>
+  </div>
+);
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard />
     },
     {
       path: "/register",
@@ -34,40 +40,20 @@ function App() {
       element: <Login />
     },
     {
-      path: "/edituser",
-      element: <EditUser />
-    },
-    {
-      path: "/changepassword",
-      element: <ChangePassword />
-    },
-    {
-      path: "/quiz",
-      element: <Quiz />
-    },
-    {
-      path: "/addquiz",
-      element: <AddQuiz />
-    },
-    {
-      path: "/editquiz",
-      element: <EditQuiz />
-    },
-    {
-      path: "/publicquiz",
-      element: <PublishedQuiz />
-    },
-    {
-      path: "/startexam",
-      element: <Exam />
-    },
-    {
-      path: "/submit-exam",
-      element: <SubmitExam />
-    },
-    {
-      path: "/report",
-      element: <Report />
+      path: "/dashboard",
+      element: <DashboardLayout />,
+      children: [
+        { index: true, element: <Dashboard /> },
+        { path: "edituser", element: <EditUser /> },
+        { path: "changepassword", element: <ChangePassword /> },
+        { path: "quiz", element: <Quiz /> },
+        { path: "addquiz", element: <AddQuiz /> },
+        { path: "editquiz", element: <EditQuiz /> },
+        { path: "publicquiz", element: <PublishedQuiz /> },
+        { path: "startexam", element: <Exam /> },
+        { path: "submit-exam", element: <SubmitExam /> },
+        { path: "report", element: <Report /> },
+      ]
     },
     {
       path: "*",
@@ -76,7 +62,6 @@ function App() {
   ]);
 
   return <div className="App">
-    {/* <Sidebar /> */}
     <RouterProvider router={(router)} />
   </div>
 }

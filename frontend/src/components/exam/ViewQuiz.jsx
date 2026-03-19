@@ -11,7 +11,7 @@ const ViewQuiz = () => {
 
     const examHandler = (_id) => {
         let quizId = _id;
-        navigate(`/startexam`, { state: { quizId } });
+        navigate(`/dashboard/startexam`, { state: { quizId } });
     };
 
     async function getQuizList() {

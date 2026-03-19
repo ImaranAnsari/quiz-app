@@ -31,7 +31,7 @@ export const submitExam = async (examData, submitScreen) => {
         const response = await axios(options);
         const data = response.data.status;
         if (data === "success") {
-            submitScreen("/submit-exam")
+            submitScreen("/dashboard/submit-exam")
         }
         return response;
     } catch (error) {

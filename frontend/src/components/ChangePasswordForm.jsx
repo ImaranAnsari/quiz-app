@@ -21,31 +21,41 @@ export const ChangePasswordForm = () => {
       confirm_password
     }
     await changePassword(user)
-
   }
+
   return (
-    <div className='auth-form-container'>
-      <h1>Change Password</h1>
-      <form className='register-form' onSubmit={submitChangeHandler}>
-        <div >
-          <label htmlFor="oldPassword">Old Password</label><br />
-          <input type="password" placeholder="Old Password" id="oldPassword" ref={Old_Password_ref} />
-        </div>
-        <div >
-          <label htmlFor="newPassword">newPassword</label><br />
-          <input type="password" placeholder="newPassword" id="newPassword" ref={New_Password_ref} />
-        </div>
-        <div >
-          <label htmlFor="confirm_password">Confirm Password</label><br />
-          <input type="password" placeholder="Confirm Password" id="confirm_password" ref={Confirm_Password_ref} />
-        </div>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      padding: 'var(--space-xl)'
+    }}>
+      <div className='auth-form-container'>
+        <h1>🔒 Change Password</h1>
+        <form className='register-form' onSubmit={submitChangeHandler}>
+          <div>
+            <label htmlFor="oldPassword">Old Password</label>
+            <input type="password" placeholder="Enter old password" id="oldPassword" ref={Old_Password_ref} />
+          </div>
+          <div>
+            <label htmlFor="newPassword">New Password</label>
+            <input type="password" placeholder="Enter new password" id="newPassword" ref={New_Password_ref} />
+          </div>
+          <div>
+            <label htmlFor="confirm_password">Confirm Password</label>
+            <input type="password" placeholder="Confirm new password" id="confirm_password" ref={Confirm_Password_ref} />
+          </div>
 
-        <div >
-          <button className='bton'>Submit</button>
-          <button className='bton' onClick={() => navigate("/dashboard")}>Cancel</button>
-
-        </div>
-      </form>
+          <div className='button'>
+            <button className='bton' type="submit">Update Password</button>
+            <button className='bton' type="button" onClick={() => navigate("/dashboard")} style={{
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid var(--border-glass-hover)'
+            }}>Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
