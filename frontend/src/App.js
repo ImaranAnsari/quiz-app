@@ -16,6 +16,8 @@ import Report from "./pages/exam/Report";
 import { Sidebar } from "./components/Sidebar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { ProtectedRoute } from "./components/ProtectedRoute";
+
 const DashboardLayout = () => (
   <div className="dashboard-layout">
     <Sidebar />
@@ -41,7 +43,7 @@ function App() {
     },
     {
       path: "/dashboard",
-      element: <DashboardLayout />,
+      element: <ProtectedRoute><DashboardLayout /></ProtectedRoute>,
       children: [
         { index: true, element: <Dashboard /> },
         { path: "edituser", element: <EditUser /> },
