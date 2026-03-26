@@ -1,60 +1,60 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import '../css/global.css';
+import { logout } from '../api/User';
+import logo from '../assets/logo.png';
+import { LayoutDashboard, List, GraduationCap, BarChart2, Settings, LogOut } from 'lucide-react';
 
-import "../css/sidebar.css";
-import { logout } from "../api/User";
-import logo from "../assets/logo.png";
+const navLinks = [
+    { label: 'Dashboard',    Icon: LayoutDashboard, path: '/dashboard' },
+    { label: 'Quizzes',      Icon: List,            path: '/dashboard/quiz' },
+    { label: 'Public Exams', Icon: GraduationCap,   path: '/dashboard/publicquiz' },
+    { label: 'Results',      Icon: BarChart2,        path: '/dashboard/report' },
+    { label: 'Settings',     Icon: Settings,         path: '/dashboard/edituser' },
+];
 
-export const Sidebar = () => {
-
+const Sidebar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const isActive = (path) => {
+        if (path === '/dashboard') return location.pathname === '/dashboard';
+        return location.pathname.startsWith(path);
+    };
 
     return (
-        <div className="s-layout__sidebar">
-            <span className="s-sidebar__trigger"> <i className="fa fa-bars"></i> </span>
-
-            <nav className="s-sidebar__nav">
-                <div className="s-sidebar__brand" onClick={() => navigate("/dashboard")}>
-                    <img src={logo} alt="QuizApp" className="s-sidebar__logo" />
-                    <span className="s-sidebar__brand-name">QuizApp</span>
+        <aside className="sidebar">
+            <img src={logo} alt="QuizApp" className="sidebar__logo" />
+            <div className="sidebar__brand">QuizApp</div>
+            <nav className="sidebar__nav">
+                {navLinks.map(({ label, Icon, path }) => (
+                    <div
+                        key={label}
+                        id={`nav-${label.toLowerCase().replace(/\s+/g, '-')}`}
+                        className={`sidebar__nav-link${isActive(path) ? ' active' : ''}`}
+                        onClick={() => navigate(path)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={e => e.key === 'Enter' && navigate(path)}
+                    >
+                        <Icon size={18} strokeWidth={2} />
+                        <span>{label}</span>
+                    </div>
+                ))}
+                <div
+                    id="nav-logout"
+                    className="sidebar__nav-link"
+                    onClick={() => { logout(); navigate('/login'); }}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={e => e.key === 'Enter' && (logout(), navigate('/login'))}
+                >
+                    <LogOut size={18} strokeWidth={2} />
+                    <span>Logout</span>
                 </div>
-                <ul>
-                    <li>
-                        <span className="s-sidebar__nav-link" onClick={() => navigate("/dashboard")}>
-                            <i className="fa fa-home"></i><em>Home</em>
-                        </span>
-                    </li>
-                    <li>
-                        <span className="s-sidebar__nav-link" onClick={() => navigate("/dashboard/edituser")}>
-                            <i className="fa fa-user"></i><em>Update Detail</em>
-                        </span>
-                    </li>
-                    <li>
-                        <span className="s-sidebar__nav-link" onClick={() => navigate("/dashboard/changepassword")}>
-                            <i className="fa fa-edit"></i><em>Change Password</em>
-                        </span>
-                    </li>
-                    <li>
-                        <span className="s-sidebar__nav-link" onClick={() => navigate("/dashboard/quiz")}>
-                            <i className="fa fa-list"></i><em>Quiz</em>
-                        </span>
-                    </li>
-                    <li>
-                        <span className="s-sidebar__nav-link" onClick={() => navigate("/dashboard/publicquiz")}>
-                            <i className="fa fa-list"></i><em>Exam</em>
-                        </span>
-                    </li>
-                    <li>
-                        <span className="s-sidebar__nav-link" onClick={() => navigate("/dashboard/report")}>
-                            <i className="fa fa-list"></i><em>Report</em>
-                        </span>
-                    </li>
-                    <li>
-                        <span className="s-sidebar__nav-link" onClick={() => { navigate("/login"); logout() }}>
-                            <i className="fa fa-sign-out"></i><em>Logout</em>
-                        </span>
-                    </li>
-                </ul>
             </nav>
-        </div>
-    )
-}
+            <div className="sidebar__footer">Quiz Manager © 2026</div>
+        </aside>
+    );
+};
+
+export default Sidebar;

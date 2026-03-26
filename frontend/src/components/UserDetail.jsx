@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import '../css/App.css';
+import '../css/global.css';
 import { getUser } from '../api/User';
 
 export const UserDetail = () => {

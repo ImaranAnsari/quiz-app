@@ -1,61 +1,52 @@
-import { useNavigate } from "react-router-dom"
+import React from 'react';
+import { useNavigate } from "react-router-dom";
+import '../../css/global.css';
 
 const SubmitExamMessage = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     return (
-        <>
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '100vh',
-                padding: 'var(--space-xl)'
-            }}>
-                <div style={{
-                    background: 'var(--bg-glass)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid var(--border-glass)',
-                    borderRadius: 'var(--radius-lg)',
-                    padding: 'var(--space-3xl)',
-                    textAlign: 'center',
-                    maxWidth: '500px',
-                    width: '100%',
-                    boxShadow: 'var(--shadow-lg)',
-                    animation: 'fadeInUp 0.5s ease-out'
+        <div className="submit-success-page">
+            <div className="submit-success-card">
+                <div style={{ fontSize: '4rem', marginBottom: 'var(--space-lg)', lineHeight: 1 }}>🎉</div>
+
+                <h2 style={{
+                    fontSize: '1.75rem',
+                    fontWeight: 800,
+                    background: 'var(--gradient-success)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    marginBottom: 'var(--space-md)',
                 }}>
-                    <div style={{ fontSize: '4rem', marginBottom: 'var(--space-lg)' }}>🎉</div>
-                    <h2 style={{
-                        fontSize: '1.75rem',
-                        fontWeight: 700,
-                        background: 'linear-gradient(135deg, #34d399, #059669)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        marginBottom: 'var(--space-md)',
-                    }}>Exam Submitted!</h2>
-                    <p style={{
-                        color: 'var(--text-secondary)',
-                        fontSize: '1rem',
-                        marginBottom: 'var(--space-2xl)',
-                        lineHeight: 1.6
-                    }}>
-                        You have submitted your exam successfully. Great job!
-                    </p>
-                    <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <button className="bton" onClick={() => navigate("/dashboard")}>
-                            🏠 Dashboard
-                        </button>
-                        <button className="bton" onClick={() => navigate("/dashboard/report")} style={{
-                            background: 'rgba(255,255,255,0.08)',
-                            border: '1px solid var(--border-glass-hover)'
-                        }}>
-                            📊 View Report
-                        </button>
-                    </div>
+                    Exam Submitted!
+                </h2>
+
+                <p style={{ marginBottom: 'var(--space-2xl)', lineHeight: 1.7, fontSize: '0.95rem' }}>
+                    You have successfully submitted your exam. Great job! 🚀<br />
+                    Check your results in the Reports section.
+                </p>
+
+                <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <button
+                        id="go-dashboard-btn"
+                        className="btn"
+                        onClick={() => navigate("/dashboard")}
+                        style={{ minWidth: 140 }}
+                    >
+                        🏠 Dashboard
+                    </button>
+                    <button
+                        id="view-report-btn"
+                        className="btn btn--outline"
+                        onClick={() => navigate("/dashboard/report")}
+                        style={{ minWidth: 140 }}
+                    >
+                        📊 View Report
+                    </button>
                 </div>
             </div>
-        </>
-    )
-}
-export default SubmitExamMessage
+        </div>
+    );
+};
+
+export default SubmitExamMessage;

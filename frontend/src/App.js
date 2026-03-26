@@ -1,29 +1,51 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
-import './css/App.css';
+import './css/global.css';
 import { Home } from "./pages/Home";
 import { RegisterUser } from "./pages/RegisterUser";
 import { Login } from "./pages/Login";
 import { EditUser } from "./pages/EditUser";
 import { ChangePassword } from "./pages/ChangePassword";
-import { Dashboard } from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import { Quiz } from "./pages/quiz/Quiz";
-import { AddQuiz } from "./components/quiz/AddQuiz";
+import { AddQuiz } from "../src/components/quiz/AddQuiz";
 import { EditQuiz } from "./pages/quiz/EditQuiz";
 import PublishedQuiz from "./pages/exam/PublishedQuiz";
 import Exam from "./pages/exam/Exam";
 import SubmitExam from "./pages/exam/SubmitExam";
 import Report from "./pages/exam/Report";
-import { Sidebar } from "./components/Sidebar";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Sidebar from "./components/Sidebar";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
+// Dashboard shell: sidebar + content area
 const DashboardLayout = () => (
   <div className="dashboard-layout">
     <Sidebar />
-    <main className="dashboard-content">
+    <div className="dashboard-content">
       <Outlet />
-    </main>
+    </div>
+  </div>
+);
+
+// 404 page
+const NotFound = () => (
+  <div style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '100vh',
+    gap: 'var(--space-lg)',
+    textAlign: 'center',
+    padding: 'var(--space-xl)',
+  }}>
+    <div style={{ fontSize: '5rem', lineHeight: 1 }}>🔍</div>
+    <h1 style={{ fontSize: '2rem', margin: 0 }}>Page Not Found</h1>
+    <p style={{ color: 'var(--color-text-secondary)' }}>
+      The page you're looking for doesn't exist.
+    </p>
+    <a href="/" className="btn" style={{ textDecoration: 'none' }}>
+      Go Home
+    </a>
   </div>
 );
 
@@ -59,13 +81,15 @@ function App() {
     },
     {
       path: "*",
-      element: <div>Page not found</div>
+      element: <NotFound />
     },
   ]);
 
-  return <div className="App">
-    <RouterProvider router={(router)} />
-  </div>
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App;

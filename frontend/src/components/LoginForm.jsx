@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../css/loginStyle.css"
+import '../css/global.css';
 import { login } from '../api/User';
 
 export const LoginForm = ({ loggedinScreen }) => {
@@ -8,60 +8,80 @@ export const LoginForm = ({ loggedinScreen }) => {
         email: '',
         password: '',
     });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleInputChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setData({ ...data, [name]: value })
+        setData({ ...data, [name]: value });
+        if (error) setError('');
     }
 
     async function submitHandler(e) {
         e.preventDefault();
+        setLoading(true);
         try {
-            await login(data, loggedinScreen)
-        } catch (error) {
-            console.log('error', error);
+            await login(data, loggedinScreen);
+        } catch (err) {
+            setError('Invalid email or password. Please try again.');
+            console.log('error', err);
+        } finally {
+            setLoading(false);
         }
     }
 
     return (
-        <>
-            <div className="screen">
-                <div className="screen__content">
-                    <div className='headlog'>
-                        <h1>Welcome Back</h1>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: 'var(--space-sm)' }}>
-                            Sign in to continue to your dashboard
-                        </p>
+        <div className="screen">
+            <div className="screen__content">
+                <div className="headlog">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to continue to your dashboard</p>
+                </div>
+                <form className="login" onSubmit={submitHandler} id="login-form">
+                    {error && (
+                        <div className="error-text" style={{ fontSize: '0.875rem', marginBottom: 'var(--space-sm)' }}>
+                            ⚠️ {error}
+                        </div>
+                    )}
+                    <div className="login__field">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            className="login__input"
+                            placeholder="Enter your email"
+                            id="email"
+                            name="email"
+                            value={data.email}
+                            onChange={handleInputChange}
+                            required
+                            autoComplete="email"
+                        />
                     </div>
-                    <form className="login" onSubmit={submitHandler}>
-                        <div className="login__field">
-                            <input type="email" className="login__input" placeholder="Email address"
-                                id="email"
-                                name='email'
-                                value={data.email}
-                                onChange={handleInputChange}
-                                required={true} />
-                        </div>
-                        <div className="login__field">
-                            <input type="password" className="login__input" placeholder="Password" id="password"
-                                name='password'
-                                value={data.password}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <button className="button login__submit">
-                            <span className="button__text">Sign In</span>
-                        </button>
-                    </form>
-                </div>
-                <div className="screen__background">
-                    <span className="screen__background__shape screen__background__shape4"></span>
-                    <span className="screen__background__shape screen__background__shape3"></span>
-                    <span className="screen__background__shape screen__background__shape2"></span>
-                    <span className="screen__background__shape screen__background__shape1"></span>
-                </div>
+                    <div className="login__field">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            className="login__input"
+                            placeholder="Enter your password"
+                            id="password"
+                            name="password"
+                            value={data.password}
+                            onChange={handleInputChange}
+                            required
+                            autoComplete="current-password"
+                        />
+                    </div>
+                    <button
+                        className="btn login__submit"
+                        type="submit"
+                        id="login-submit-btn"
+                        disabled={loading}
+                    >
+                        <span className="button__text">{loading ? 'Signing in...' : '🔑 Sign In'}</span>
+                    </button>
+                </form>
             </div>
-        </>
+        </div>
     )
 }
