@@ -55,11 +55,12 @@ const ReportComponent = () => {
                     {report.map((item, index) => {
                         const percentage = item.total > 0 ? Math.round((item.score / item.total) * 100) : 0;
                         const color = percentage >= 70 ? 'var(--color-success)' : percentage >= 40 ? 'var(--color-warning)' : 'var(--color-danger)';
+                        const reportTitle = item.quizId?.quizName || item.quizId?.name || (typeof item.quizId === 'string' ? item.quizId : `Report #${index + 1}`);
                         return (
                             <div className="card reportCard" key={index} id={`report-card-${index}`}>
                                 <div className="card-header">
                                     <BarChart2 size={16} style={{ marginRight: 6, verticalAlign: 'middle' }} />
-                                    Report #{index + 1}
+                                    {reportTitle}
                                 </div>
                                 <div className="card-body" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                                     <div style={{ textAlign: 'center', padding: 'var(--space-md) 0', borderBottom: '1px solid var(--color-border)', marginBottom: 'var(--space-sm)' }}>

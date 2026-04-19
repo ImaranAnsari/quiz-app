@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 const schema = mongoose.Schema;
-//schema
-// username, email, encryptedPassword, contactNumber, timestamp
+
 const userSchema = new schema(
   {
     userName: {
@@ -27,15 +26,15 @@ const userSchema = new schema(
       required: true,
     },
     isDeleted: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     isActive: {
       type: Boolean,
       default: true,
     },
   },
-  
+
   { timestamps: true }
 );
 

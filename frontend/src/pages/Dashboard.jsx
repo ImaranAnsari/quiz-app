@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import '../css/global.css';
 import StatCard from '../components/StatCard';
 import QuizCard from '../components/QuizCard';
@@ -9,7 +9,7 @@ import LoadingSkeleton from '../components/LoadingSkeleton';
 import Toast from '../components/Toast';
 import useQuizzes from '../hooks/useQuizzes';
 import useStats from '../hooks/useStats';
-import { List, RefreshCw, Star, Plus, Search, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
+import { List, RefreshCw, Star, Plus, Search } from 'lucide-react';
 
 const Dashboard = () => {
   const { quizzes, loading, error } = useQuizzes();
@@ -47,9 +47,9 @@ const Dashboard = () => {
       </div>
 
       <div className="stat-cards">
-        <StatCard icon={<List size={20} />}      label="Total Quizzes"  value={stats.totalQuizzes}  color="var(--color-primary)" />
+        <StatCard icon={<List size={20} />} label="Total Quizzes" value={stats.totalQuizzes} color="var(--color-primary)" />
         <StatCard icon={<RefreshCw size={20} />} label="Total Attempts" value={stats.totalAttempts} color="var(--color-accent)" />
-        <StatCard icon={<Star size={20} />}      label="Average Score"  value={stats.averageScore}  color="var(--color-success)" />
+        <StatCard icon={<Star size={20} />} label="Average Score" value={stats.averageScore} color="var(--color-success)" />
       </div>
 
       <Chart data={chartData} title="Quiz Attempts" color="var(--color-primary)" />

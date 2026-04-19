@@ -9,6 +9,7 @@ const reportSchema = new schema(
         },
         quizId: {
             type: mongoose.Types.ObjectId,
+            ref: 'Quiz',
             require: true
         },
         score: {

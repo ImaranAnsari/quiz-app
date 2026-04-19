@@ -19,15 +19,13 @@ export const getReport: RequestHandler = async (req, res, next) => {
         const reportId = req.params.reportId;
 
         if (reportId) {
-
             report = await Report.findOne({ _id: reportId, userId: req.userId })
-
-            // .populate('quizId').exec();
-
+                .populate({ path: 'quizId', select: 'quizName' })
+                .exec();
         } else {
-
-            report = await Report.find({ userId: req.userId }).populate('quizId').exec();
-
+            report = await Report.find({ userId: req.userId })
+                .populate({ path: 'quizId', select: 'quizName' })
+                .exec();
         }
 
         if (!report) {

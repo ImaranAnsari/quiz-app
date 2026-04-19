@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import '../../css/global.css';
 import { useLocation, useNavigate } from "react-router-dom";
 import { startExam, submitExam } from "../../api/Exam";
@@ -13,7 +13,7 @@ const StartExam = ({ submitScreen }) => {
     const [submitting, setSubmitting] = useState(false);
     const [answers, setAnswers] = useState({});
 
-    async function fetchQuiz() {
+    const fetchQuiz = useCallback(async () => {
         setLoading(true);
         try {
             let quizD = await startExam(quizId);
@@ -23,7 +23,7 @@ const StartExam = ({ submitScreen }) => {
         } finally {
             setLoading(false);
         }
-    }
+    }, [quizId]);
 
     const handleAnswerChange = (questionNumber, value) => {
         setAnswers(prev => ({ ...prev, [questionNumber]: value }));
@@ -45,7 +45,7 @@ const StartExam = ({ submitScreen }) => {
 
     useEffect(() => {
         if (quizId) fetchQuiz();
-    }, [quizId]);
+    }, [quizId, fetchQuiz]);
 
     if (loading) {
         return (
