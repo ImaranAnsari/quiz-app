@@ -44,12 +44,12 @@ export const ChangePasswordForm = () => {
 
   return (
     <div className="main">
-      <div className="topbar">
+      {/* <div className="topbar">
         <h2>Change Password</h2>
         <button className="btn btn--outline" onClick={() => navigate("/dashboard/edituser")}>
           <ArrowLeft size={15} /> Back to Settings
         </button>
-      </div>
+      </div> */}
 
       {toast && (
         <div className="toast" style={{ position: 'relative', bottom: 'auto', right: 'auto', marginBottom: 'var(--space-lg)', borderLeft: '4px solid var(--color-success)' }}>
@@ -57,7 +57,7 @@ export const ChangePasswordForm = () => {
         </div>
       )}
 
-      <div style={{ maxWidth: 480 }}>
+      <div style={{ maxWidth: "50%" }}>
         <div className="card">
           <div className="card-header">
             <Lock size={16} style={{ marginRight: 6, verticalAlign: 'middle' }} /> Update Password

@@ -107,8 +107,8 @@ export const EditUserForm = () => {
             </div>
             <div className="card-body" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
               {[
-                { label: 'Name',    value: userData.userName },
-                { label: 'Email',   value: userData.email },
+                { label: 'Name', value: userData.userName },
+                { label: 'Email', value: userData.email },
                 { label: 'Contact', value: userData.contact },
               ].map(({ label, value }) => (
                 <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 'var(--space-sm) 0', borderBottom: '1px solid var(--color-border)' }}>
