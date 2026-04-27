@@ -706,6 +706,36 @@ label {
   color: var(--color-text-secondary);
 }
 
+.badge--easy {
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--color-success-dark);
+}
+
+[data-theme="dark"] .badge--easy {
+  background: rgba(52, 211, 153, 0.2);
+  color: var(--color-success);
+}
+
+.badge--medium {
+  background: rgba(251, 191, 36, 0.15);
+  color: #d97706; /* warning dark */
+}
+
+[data-theme="dark"] .badge--medium {
+  background: rgba(251, 191, 36, 0.2);
+  color: var(--color-warning);
+}
+
+.badge--hard {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--color-danger-dark);
+}
+
+[data-theme="dark"] .badge--hard {
+  background: rgba(248, 113, 113, 0.2);
+  color: var(--color-danger);
+}
+
 .quiz-card__actions {
   display: flex;
   gap: var(--space-sm);

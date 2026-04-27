@@ -87,4 +87,33 @@ const isUserExist = async (email: String) => {
 };
 
 
-export { registerUser, loginUser, isUserExist };
+const refreshToken: RequestHandler = async (req, res, next) => {
+  let resp: ReturnResponse;
+  try {
+    const userId = req.userId;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      const err = new ProjectError("User not found");
+      err.statusCode = 401;
+      throw err;
+    }
+
+    if (!user.isActive) {
+      const err = new ProjectError("Account is not Active!");
+      err.statusCode = 401;
+      throw err;
+    }
+
+    const token = jwt.sign({ userId: user._id }, `${process.env.SECRET_KEY}`, {
+      expiresIn: "1h",
+    });
+
+    resp = { status: "success", message: "Token refreshed", data: { token } };
+    res.status(200).send(resp);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { registerUser, loginUser, isUserExist, refreshToken };

@@ -15,6 +15,7 @@ import SubmitExam from "./pages/exam/SubmitExam";
 import Report from "./pages/exam/Report";
 import Sidebar from "./components/Sidebar";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import SessionManager from "./components/SessionManager";
 
 // Dashboard shell: sidebar + content area
 const DashboardLayout = () => (
@@ -87,6 +88,7 @@ function App() {
 
   return (
     <div className="App">
+      <SessionManager />
       <RouterProvider router={router} />
     </div>
   );

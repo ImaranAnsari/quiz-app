@@ -94,6 +94,21 @@ export const changePassword = async (user) => {
 };
 
 
+export const refreshToken = async () => {
+    const options = {
+        method: 'POST',
+        url: backendUrl + `/auth/refresh`,
+        headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
+    };
+    try {
+        const response = await axios(options);
+        return response;
+    } catch (error) {
+        console.log('Refresh Token_ERROR', error);
+        throw error;
+    }
+};
+
 export const logout = async (user) => {
     localStorage.removeItem('token');
     window.location.reload();

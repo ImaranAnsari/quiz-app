@@ -10,10 +10,12 @@ export const QuizList = () => {
   const navigate = useNavigate();
   const [quizzes, setQuizzes] = useState([]);
   const [selectedQuizId, setSelectedQuizId] = useState(null);
+  const [quizToDelete, setQuizToDelete] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const [flag, setFlag] = useState(false);
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('');
+  const [levelFilter, setLevelFilter] = useState('');
   const [loading, setLoading] = useState(true);
 
   const toggleModal = (_id) => { setSelectedQuizId(_id); setModalOpen(true); };
@@ -34,10 +36,21 @@ export const QuizList = () => {
 
   const editHandler = (_id) => navigate(`/dashboard/editquiz`, { state: { quizId: _id } });
 
-  const deleteHandler = async (_id) => {
-    if (!window.confirm('Delete this quiz?')) return;
-    await deleteQuiz({ _id });
-    setFlag(!flag);
+  const deleteHandler = (item) => {
+    if (item.isPublished) return;
+    setQuizToDelete(item._id);
+  };
+
+  const confirmDelete = async () => {
+    if (!quizToDelete) return;
+    try {
+      await deleteQuiz({ _id: quizToDelete });
+      setFlag(!flag);
+    } catch (err) {
+      console.log('Error deleting quiz:', err);
+    } finally {
+      setQuizToDelete(null);
+    }
   };
 
   const publishHandler = async (_id) => {
@@ -48,9 +61,13 @@ export const QuizList = () => {
   const filteredQuizzes = useMemo(() => {
     let q = quizzes;
     if (search) q = q.filter(quiz => quiz.quizName?.toLowerCase().includes(search.toLowerCase()));
-    if (filter) q = q.filter(quiz => quiz.status === filter);
+    if (filter) {
+      const isPub = filter === 'published';
+      q = q.filter(quiz => !!quiz.isPublished === isPub);
+    }
+    if (levelFilter) q = q.filter(quiz => quiz.level === levelFilter);
     return q;
-  }, [quizzes, search, filter]);
+  }, [quizzes, search, filter, levelFilter]);
 
   return (
     <>
@@ -84,6 +101,12 @@ export const QuizList = () => {
             <option value="published">Published</option>
             <option value="draft">Draft</option>
           </select>
+          <select id="quiz-level-filter" value={levelFilter} onChange={e => setLevelFilter(e.target.value)}>
+            <option value="">All Levels</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
         </div>
 
         {loading ? (
@@ -111,21 +134,30 @@ export const QuizList = () => {
                 <div className="quiz-card__title">{item.quizName}</div>
                 <div className="quiz-card__meta">
                   <span>{item.questionsList?.length || 0} questions</span>
-                  <span className={`badge ${item.status === 'published' ? 'badge--published' : 'badge--draft'}`}>
-                    {item.status || 'draft'}
+                  {item.level && (
+                    <span className={`badge badge--${item.level}`}>
+                      {item.level}
+                    </span>
+                  )}
+                  <span className={`badge ${item.isPublished ? 'badge--published' : 'badge--draft'}`}>
+                    {item.isPublished ? 'published' : 'draft'}
                   </span>
                 </div>
                 <div className="quiz-card__actions">
                   <button className="action_button" onClick={() => toggleModal(item._id)} title="View Details" id={`quiz-details-${item._id}`}>
                     <Eye size={15} />
                   </button>
-                  <button className="action_button" onClick={() => editHandler(item._id)} title="Edit Quiz" id={`quiz-edit-${item._id}`}>
-                    <Pencil size={15} />
-                  </button>
-                  <button className="action_button" onClick={() => deleteHandler(item._id)} title="Delete Quiz" id={`quiz-delete-${item._id}`} style={{ color: 'var(--color-danger)' }}>
-                    <Trash2 size={15} />
-                  </button>
-                  <button className="action_button" onClick={() => publishHandler(item._id)} title={item.status === 'published' ? 'Unpublish' : 'Publish'} id={`quiz-publish-${item._id}`} style={item.status === 'published' ? { color: 'var(--color-success)' } : {}}>
+                  {!item.isPublished && (
+                    <>
+                      <button className="action_button" onClick={() => editHandler(item._id)} title="Edit Quiz" id={`quiz-edit-${item._id}`}>
+                        <Pencil size={15} />
+                      </button>
+                      <button className="action_button" onClick={() => deleteHandler(item)} title="Delete Quiz" id={`quiz-delete-${item._id}`} style={{ color: 'var(--color-danger)' }}>
+                        <Trash2 size={15} />
+                      </button>
+                    </>
+                  )}
+                  <button className="action_button" onClick={() => publishHandler(item._id)} title={item.isPublished ? 'Unpublish' : 'Publish'} id={`quiz-publish-${item._id}`} style={item.isPublished ? { color: 'var(--color-success)' } : {}}>
                     <Zap size={15} />
                   </button>
                 </div>
@@ -134,6 +166,19 @@ export const QuizList = () => {
           </div>
         )}
       </div>
+
+      {quizToDelete && (
+        <div className="modal-backdrop" style={{ zIndex: 3000 }}>
+          <div className="modal" style={{ minWidth: 300, textAlign: 'center', padding: 'var(--space-2xl)' }}>
+            <h3 style={{ marginBottom: 'var(--space-md)' }}>Delete Quiz</h3>
+            <p style={{ marginBottom: 'var(--space-lg)' }}>Are you sure you want to delete this quiz?</p>
+            <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center' }}>
+              <button className="btn btn--danger" onClick={confirmDelete}>Delete</button>
+              <button className="btn btn--outline" onClick={() => setQuizToDelete(null)}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

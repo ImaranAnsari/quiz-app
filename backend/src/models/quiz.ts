@@ -7,6 +7,11 @@ const quizSchema = new schema({
         required: true,
         unique: true
     },
+    level: {
+        type: String,
+        enum: ['easy', 'medium', 'hard'],
+        default: 'medium'
+    },
     questionsList: [
         {
             questionNumber: Number,
@@ -21,6 +26,10 @@ const quizSchema = new schema({
         required: true,
     },
     isPublished: {
+        type: Boolean,
+        default: false,
+    },
+    isDeleted: {
         type: Boolean,
         default: false,
     },

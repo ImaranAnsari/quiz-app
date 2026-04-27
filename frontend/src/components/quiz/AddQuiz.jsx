@@ -11,6 +11,7 @@ export function AddQuiz() {
 
   const [formData, setFormData] = useState({
     quizName: "",
+    level: "medium",
     questionsList: [{
       questionNumber: 1,
       question: "",
@@ -66,7 +67,13 @@ export function AddQuiz() {
       setToast('Quiz created successfully!');
       setTimeout(() => navigate('/dashboard/quiz'), 1200);
     } catch (err) {
-      setToast('Failed to create quiz.');
+      if (err.response && err.response.data && err.response.data.data && err.response.data.data.length > 0) {
+        setToast(err.response.data.data[0].msg || 'Validation failed');
+      } else if (err.response && err.response.data && err.response.data.message) {
+        setToast(err.response.data.message);
+      } else {
+        setToast('Failed to create quiz.');
+      }
       console.log(err);
     } finally {
       setLoading(false);
@@ -92,6 +99,15 @@ export function AddQuiz() {
         <div className="quiz">
           <label htmlFor="quizName">Quiz Name</label>
           <input id="quizName" type="text" placeholder="Enter quiz name..." name="quizName" value={formData.quizName} onChange={(e) => inputChangeContent(e)} required />
+        </div>
+
+        <div className="quiz" style={{ marginTop: 'var(--space-md)' }}>
+          <label htmlFor="level">Quiz Level</label>
+          <select id="level" name="level" value={formData.level} onChange={(e) => inputChangeContent(e)} required>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
         </div>
 
         <div className="cardAddQuiz">

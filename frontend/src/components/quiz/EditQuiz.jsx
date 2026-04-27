@@ -14,6 +14,7 @@ export function EditQuiz() {
 
     const [formData, setFormData] = useState({
         quizName: "",
+        level: "medium",
         questionsList: [{ questionNumber: 1, question: "", options: ["", ""] }],
         answers: {},
     });
@@ -65,7 +66,13 @@ export function EditQuiz() {
             setToast('Quiz updated successfully!');
             setTimeout(() => navigate('/dashboard/quiz'), 1200);
         } catch (err) {
-            setToast('Failed to update quiz.');
+            if (err.response && err.response.data && err.response.data.data && err.response.data.data.length > 0) {
+                setToast(err.response.data.data[0].msg || 'Validation failed');
+            } else if (err.response && err.response.data && err.response.data.message) {
+                setToast(err.response.data.message);
+            } else {
+                setToast('Failed to update quiz.');
+            }
             console.log("error", err);
         } finally {
             setSaving(false);
@@ -131,6 +138,15 @@ export function EditQuiz() {
                 <div className="quiz">
                     <label htmlFor="edit-quizName">Quiz Name</label>
                     <input id="edit-quizName" type="text" placeholder="Enter quiz name..." name="quizName" value={formData.quizName} onChange={(e) => inputChangeContent(e)} required />
+                </div>
+
+                <div className="quiz" style={{ marginTop: 'var(--space-md)' }}>
+                    <label htmlFor="edit-level">Quiz Level</label>
+                    <select id="edit-level" name="level" value={formData.level || 'medium'} onChange={(e) => inputChangeContent(e)} required>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
                 </div>
 
                 <div className="cardCss">

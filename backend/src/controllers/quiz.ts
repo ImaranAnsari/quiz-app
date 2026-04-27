@@ -9,11 +9,12 @@ export const createQuiz: RequestHandler = async (req, res, next) => {
 
     try {
         const quizName = req.body.quizName;
+        const level = req.body.level || 'medium';
         const questionsList = req.body.questionsList;
         const createdBy = req.userId;
         const answers = req.body.answers;
 
-        const quiz = new Quiz({ quizName, questionsList, createdBy, answers });
+        const quiz = new Quiz({ quizName, level, questionsList, createdBy, answers });
         const result = await quiz.save();
         const resp: ReturnResponse = {
             status: "success",
@@ -34,6 +35,7 @@ export const getQuiz: RequestHandler = async (req, res, next) => {
             createdBy: Types.ObjectId,
             isPublished?: boolean,
             quizName?: string,
+            level?: string,
             questionsList?: any,
             answers?: any
         }
@@ -44,6 +46,7 @@ export const getQuiz: RequestHandler = async (req, res, next) => {
             quiz = await Quiz.findById(quizId,
                 {
                     quizName: 1,
+                    level: 1,
                     questionsList: 1,
                     createdBy: 1,
                     answers: 1,
@@ -55,6 +58,7 @@ export const getQuiz: RequestHandler = async (req, res, next) => {
                 { userId: req.userId },
                 {
                     quizName: 1,
+                    level: 1,
                     questionsList: 1,
                     createdBy: 1,
                     answers: 1,
@@ -93,6 +97,7 @@ export const getAllQuiz: RequestHandler = async (req, res, next) => {
             { isPublished: true },
             {
                 quizName: 1,
+                level: 1,
                 questionsList: 1,
                 isPublished: 1
             }
@@ -149,6 +154,9 @@ export const updateQuiz: RequestHandler = async (req, res, next) => {
             }
             quiz.quizName = req.body.quizName;
         }
+        if (req.body.level) {
+            quiz.level = req.body.level;
+        }
         quiz.questionsList = req.body.questionsList;
         quiz.answers = req.body.answers;
         await quiz.save();
@@ -189,7 +197,9 @@ export const deleteQuiz: RequestHandler = async (req, res, next) => {
             throw err;
         }
 
-        await Quiz.deleteOne({ _id: quizId });
+        quiz.isDeleted = true;
+        await quiz.save();
+
         const resp: ReturnResponse = {
             status: "success",
             message: "Quiz deleted successfully",
@@ -228,6 +238,7 @@ export const publishQuiz: RequestHandler = async (req, res, next) => {
 
         quiz.isPublished = true;
         await quiz.save();
+
         const resp: ReturnResponse = {
             status: "success",
             message: "Quiz published!",

@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { setupAxiosInterceptors } from './utils/axiosSetup';
+
+setupAxiosInterceptors();
 
 // Ensure theme is set on first load
 const theme = localStorage.getItem('theme');

@@ -9,7 +9,10 @@ import {
   registerUser,
   loginUser,
   isUserExist,
+  refreshToken,
 } from "../controllers/auth";
+
+import { isAuthenticated } from "../middlewares/isAuth";
 
 const router = express.Router();
 
@@ -108,5 +111,8 @@ router.post(
   validateRequest,
   loginUser
 );
+
+// POST /auth/refresh
+router.post("/refresh", isAuthenticated, refreshToken);
 
 export default router;
